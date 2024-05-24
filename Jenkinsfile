@@ -8,6 +8,11 @@ pipeline {
                 sh 'mvn compile'
             }
         }
+        stage('Tests - JUnit/Mockito') {
+            steps {
+                sh 'mvn test'
+            }
+        }
 
         stage('SonarQube analysis') {
             steps {
