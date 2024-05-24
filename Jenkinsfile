@@ -38,6 +38,16 @@ pipeline {
                 }
             }
         }
+          stage('Push Docker Image to DockerHub') {
+             steps {
+                 script {
+                     sh '''
+                     docker login -u mbedir -p pwd
+                     docker push mbedir/timesheet-devops:1.0.0
+                     '''
+                }
+            }
+         }
     }
 
 }
