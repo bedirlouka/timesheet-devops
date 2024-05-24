@@ -35,8 +35,8 @@ pipeline {
              steps {
                  script {
                      sh '''
-                     docker login -u azizbenismail -p 'your-dockerhub-password'
-                     docker push azizbenismail/kaddem:9
+                     docker login -u mbedir -p '223AFT1221'
+                     docker push mbedir/timesheet-devops:latest
                      '''
                 }
             }
