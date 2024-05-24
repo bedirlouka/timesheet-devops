@@ -31,7 +31,16 @@ pipeline {
                     sh 'mvn deploy'
                 }
         }
-       
+        stage('Push Docker Image to DockerHub') {
+             steps {
+                 script {
+                     sh '''
+                     docker login -u azizbenismail -p 'your-dockerhub-password'
+                     docker push azizbenismail/kaddem:9
+                     '''
+                }
+            }
+         }
     }
 
 }
