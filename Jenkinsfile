@@ -44,7 +44,7 @@ pipeline {
                 script {
                     withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerpwd')]) {
                         sh '''
-                        docker login -u mbedir -p "$dockerpwd"
+                        docker login -u mbedir -p 223AFT1221
                         docker push mbedir/Timesheet-devops:latest
                         '''
                     }
