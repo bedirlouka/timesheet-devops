@@ -13,6 +13,12 @@ pipeline {
                 sh 'mvn test'
             }
         }
+        stage('Rapport JaCoCo') {
+            steps {
+                sh 'mvn test'
+                sh 'mvn jacoco:report'
+            }
+        }
 
         stage('SonarQube analysis') {
             steps {
