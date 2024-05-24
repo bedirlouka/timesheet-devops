@@ -58,14 +58,13 @@ pipeline {
                 }
             }
         }
-        stage('Email Notification') {
+       stage('Email Notification') {
             steps{
-//                             mail bcc: '', body: '''The pipeline has completed successfully. No action required.
-// ''', cc: '', from: '', replyTo: '', subject: 'Succès de la pipeline DevOps Project timesheet-devops to bedirlouka', to: 'bedir.malek@esprit.tn'
-mail bcc: '', body: '''Stage: GIT Pull
- - Pulling from Git...
+                            mail bcc: '', body: '''The pipeline has completed successfully. No action required.
+ ''', cc: '', from: '', replyTo: '', subject: 'Succès de la pipeline DevOps Project timesheet-devops', to: 'bedir.malek@esprit.tn'
+mail bcc: '', body: '''
 
-Stage:  Compile
+Stage: Compile
  - Building Spring project...
 
 Stage: Test - JUNIT/MOCKITO
@@ -85,9 +84,6 @@ Stage: Push Docker Image
 
 Stage: Docker Compose
  - Running Docker Compose...
-
-Stage: Monitoring Services G/P
- - Starting Prometheus and Grafana...
 
 Final Report: The pipeline has completed successfully. No action required''', cc: '', from: '', replyTo: '', subject: 'Succès de la pipeline DevOps Project timesheet-devops to bedirlouka', to: 'bedir.malek@esprit.tn'
             }
