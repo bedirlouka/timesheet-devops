@@ -34,7 +34,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker build -t mbedir/timesheet-devops:latest .'
+                    sh 'docker build -t mbedir/timesheet-devops:1.0 .'
                 }
             }
         }
@@ -43,7 +43,7 @@ pipeline {
                  script {
                      sh '''
                      docker login -u mbedir -p '223AFT1221'
-                     docker push mbedir/timesheet-devops:latest
+                     docker push mbedir/timesheet-devops:1.0
                      '''
                 }
             }
