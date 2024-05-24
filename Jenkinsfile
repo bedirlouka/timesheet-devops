@@ -34,7 +34,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'docker rmi mbedir/timesheet-devops:1.0.0 || true'
+                    def buildTag = "1.0.0-${env.BUILD_NUMBER}" // Incorporating build number into the tag
                     sh 'docker build -t mbedir/timesheet-devops:1.0.0 .'
                 }
             }
@@ -42,9 +42,11 @@ pipeline {
           stage('Push Docker Image to DockerHub') {
              steps {
                  script {
+                     def buildTag = "1.0.0-${env.BUILD_NUMBER}" // Incorporating build number into the tag
                      sh '''
                      docker login -u mbedir -p 223AFT1221
-                     docker push mbedir/timesheet-devops:1.0.0
+                     docker tag mbedir/timesheet-devops:1.0.0 mbedir/timesheet-devops:${buildTag}
+                     docker push mbedir/timesheet-devops:${buildTag}
                      '''
                 }
             }
