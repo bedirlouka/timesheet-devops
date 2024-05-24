@@ -10,7 +10,9 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - db:/var/lib/mysql
+      - type: volume
+      - source: db
+      - target: /var/lib/mysql
   app-timesheet:
     depends_on:
     - mysqldb
@@ -30,4 +32,4 @@ services:
     tty: true
 
 volumes:
-db:
+db: {}
