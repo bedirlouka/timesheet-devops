@@ -51,7 +51,10 @@ pipeline {
         stage('Docker compose (FrontEnd BackEnd MySql)') {
             steps {
                 script {
-                    sh 'docker-compose up -d'
+                    sh '''
+                    export PATH=$PATH:/usr/local/bin
+                    docker-compose up -d
+                    '''
                 }
             }
         }
