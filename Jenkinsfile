@@ -39,6 +39,18 @@ pipeline {
                 }
             }
         }
+        stage('Push Docker Image to DockerHub') {
+            steps {
+                script {
+                    withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerpwd')]) {
+                        sh '''
+                        docker login -u mbedir -p "$dockerpwd"
+                        docker push mbedir/Timesheet-devops:latest
+                        '''
+                    }
+                }
+            }
+        }
 
     }
 
