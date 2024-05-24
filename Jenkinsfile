@@ -32,33 +32,32 @@ pipeline {
                 }
         }
         stage('Build Docker Image') {
-            steps
-                {
-                   def imageTag = "mbedir/timesheet-devops:${BUILD_NUMBER}"
-                   sh "docker build -t ${imageTag} ."
+            steps {
+                script {
+                    sh 'docker build -t mbedir/timesheet-devops:1.0.0 .'
                 }
-             }
+            }
+        }
         stage('Push Docker Image to DockerHub') {
-            steps {
-                  def imageTag = "mbedir/timesheet-devops:${BUILD_NUMBER}"
-                  sh """
+             steps {
+                 script {
+                     sh '''
                      docker login -u mbedir -p 223AFT1221
-                     docker push ${imageTag}
-                     """
+                     docker push mbedir/timesheet-devops:1.0.0
+                     '''
                 }
-        }
+            }
+         }
         stage('Docker compose (FrontEnd BackEnd MySql)') {
-           environment {
-                        BUILD_NUMBER = "${env.BUILD_NUMBER}"
-                     }
             steps {
-            sh """
-            docker-compose down -v
-            docker-compose up -d
-            """
-        }
-    }
-        
+                script {
+                   sh '''
+                    docker-compose down -v
+                    docker-compose up -d
+                    '''
+                }
+            }
+        }   
     }
 
 }
