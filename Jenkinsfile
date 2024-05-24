@@ -31,6 +31,13 @@ pipeline {
                     sh 'mvn deploy'
                 }
         }
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    sh 'docker build -t mbedir/timesheet-devops:1.0.0 .'
+                }
+            }
+        }
     }
 
 }
