@@ -45,7 +45,7 @@ pipeline {
                      def buildTag = "1.0.0-${env.BUILD_NUMBER}" // Incorporating build number into the tag
                      sh '''
                      docker login -u mbedir -p 223AFT1221
-                     docker tag  mbedir/timesheet-devops:${buildTag}
+                     docker tag mbedir/timesheet-devops:1.0.0 mbedir/timesheet-devops:${buildTag}
                      docker push mbedir/timesheet-devops:${buildTag}
                      '''
                 }
