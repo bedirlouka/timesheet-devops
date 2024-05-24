@@ -13,7 +13,7 @@ services:
       - db:/var/lib/mysql
   app-timesheet:
     depends_on:
-    - mysqldb
+      - mysqldb
     image: mbedir/timesheet-devops:1.0.0
     restart: unless-stopped
     ports:
