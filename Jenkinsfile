@@ -31,6 +31,14 @@ pipeline {
                     sh 'mvn deploy'
                 }
         }
+        stage('Build Docker Image (Spring Part)') {
+            steps {
+                script {
+                    sh 'sudo chmod 666 /var/run/docker.sock'
+                    def dockerImage=docker.build("mbedir/Timesheet-devops:latest")
+                }
+            }
+        }
 
     }
 
