@@ -1,4 +1,4 @@
-FROM openjdk:11.0.22
+FROM openjdk:11
 EXPOSE 8085
 WORKDIR /app
 RUN apt-get update && apt-get install -y curl
