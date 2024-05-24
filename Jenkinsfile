@@ -31,23 +31,6 @@ pipeline {
                     sh 'mvn deploy'
                 }
         }
-        stage('Build Docker Image') {
-            steps {
-                script {
-                    sh 'docker build -t mbedir/timesheet-devops:1.0 .'
-                }
-            }
-        }
-        stage('Push Docker Image to DockerHub') {
-             steps {
-                 script {
-                     sh '''
-                     docker login -u mbedir -p '223AFT1221'
-                     docker push mbedir/timesheet-devops:1.0
-                     '''
-                }
-            }
-         }
     }
 
 }
