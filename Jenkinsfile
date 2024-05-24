@@ -48,6 +48,14 @@ pipeline {
                 }
             }
          }
+        stage('Docker compose (FrontEnd BackEnd MySql)') {
+            steps {
+                script {
+                    sh 'sudo systemctl stop mysql'
+                    sh 'docker-compose up -d'
+                }
+            }
+        }
     }
 
 }
