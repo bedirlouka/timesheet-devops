@@ -10,9 +10,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - type: volume
-      - source: db
-      - target: /var/lib/mysql
+      - db:/var/lib/mysql
   app-timesheet:
     depends_on:
     - mysqldb
@@ -28,8 +26,6 @@ services:
         "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQL5InnoDBDialect",
         "spring.jpa.hibernate.ddl-auto" : "update"
       }'
-    stdin_open: true
-    tty: true
 
 volumes:
-  db: {}
+  db: 
