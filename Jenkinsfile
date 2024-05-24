@@ -34,6 +34,7 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 script {
+                    sh 'docker rmi mbedir/timesheet-devops:1.0.0 || true'
                     sh 'docker build -t mbedir/timesheet-devops:1.0.0 .'
                 }
             }
