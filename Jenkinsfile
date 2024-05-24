@@ -31,27 +31,7 @@ pipeline {
                     sh 'mvn deploy'
                 }
         }
-        stage('Build Docker Image (Spring Part)') {
-            steps {
-                script {
-                    sh 'sudo chmod 666 /var/run/docker.sock'
-                    def dockerImage=docker.build("mbedir/Timesheet-devops:latest")
-                }
-            }
-        }
-        stage('Push Docker Image to DockerHub') {
-            steps {
-                script {
-                    withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerpwd')]) {
-                        sh '''
-                        docker login -u mbedir -p 223AFT1221
-                        docker push mbedir/Timesheet-devops:latest
-                        '''
-                    }
-                }
-            }
-        }
-
+       
     }
 
 }
