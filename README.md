@@ -24,3 +24,19 @@ Voici les étapes clés que j'ai suivies pour assurer le déploiement réussi :
 Compétences : Jenkins · Sonarqube · Nexus · JUnit · graphana · prometheus · DevOps · Docker
 
 ![Alt text](./image.png)
+![Alt text](./jenkins.png)
+![Alt text](./sonar.png)
+![Alt text](./pipline.png)
+![Alt text](./nexus.png)
+![Alt text](./dockerhub.png)
+![Alt text](./prometheus.png)
+![Alt text](./grafana.png)
+![Alt text](./vagrant.png)
+
+
+
+
+
+
+
+
