@@ -1,5 +1,9 @@
 pipeline {
     agent any
+
+    tools {
+        maven 'M2_HOME' // Assumes Maven is installed and named 'M2_HOME' in Jenkins global tool configuration
+    }
     stages {
         stage('Compile') {
 
