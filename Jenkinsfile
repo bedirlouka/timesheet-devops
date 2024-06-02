@@ -62,6 +62,38 @@ pipeline {
                 }
             }
         }
+
+        post {
+        success {
+            emailext(
+                subject: 'Jenkins Pipeline Success: ${currentBuild.fullDisplayName}',
+                body: '''<p>Good news,</p>
+                         <p>The Jenkins pipeline for <b>${currentBuild.fullDisplayName}</b> succeeded.</p>
+                         <p>Check the details <a href="${env.BUILD_URL}">here</a>.</p>''',
+                recipientProviders: [[$class: 'DevelopersRecipientProvider']],
+                to: 'bedir.malek@esprit.tn'
+            )
+        }
+        failure {
+            emailext(
+                subject: 'Jenkins Pipeline Failure: ${currentBuild.fullDisplayName}',
+                body: '''<p>Unfortunately,</p>
+                         <p>The Jenkins pipeline for <b>${currentBuild.fullDisplayName}</b> failed.</p>
+                         <p>Check the details <a href="${env.BUILD_URL}">here</a>.</p>''',
+                recipientProviders: [[$class: 'DevelopersRecipientProvider']],
+                to: 'bedir.malek@esprit.tn'
+            )
+        }
+        unstable {
+            emailext(
+                subject: 'Jenkins Pipeline Unstable: ${currentBuild.fullDisplayName}',
+                body: '''<p>Warning,</p>
+                         <p>The Jenkins pipeline for <b>${currentBuild.fullDisplayName}</b> is unstable.</p>
+                         <p>Check the details <a href="${env.BUILD_URL}">here</a>.</p>''',
+                recipientProviders: [[$class: 'DevelopersRecipientProvider']],
+                to: 'bedir.malek@esprit.tn'
+            )
+        }
     }
 
 }
