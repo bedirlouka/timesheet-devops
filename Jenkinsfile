@@ -82,43 +82,6 @@ pipeline {
         }
     }
 }
-        stage('Email Notification') {
-            steps {
-                mail bcc: '', 
-                     body: '''
-
-Stage: Compile
- - Building Spring project...
-
-Stage: Tests - JUnit/Mockito
- - Testing Spring project...
-
-Stage: SonarQube analysis
- - Running Sonarqube analysis...
-
-Stage: Deploy to nexus
- - Deploying to Nexus...
-
-Stage: Build Docker Image
- - Building Docker image for the application...
-
-Stage: Push Docker Image
- - Pushing Docker image to Docker Hub...
-
-Stage: Docker Compose
- - Running Docker Compose...
-
-Stage: Monitoring Services G/P
- - Starting Prometheus and Grafana...
-
-Final Report: The pipeline has completed successfully. No action required''', 
-                     cc: '', 
-                     from: '', 
-                     replyTo: '', 
-                     subject: 'Succès de la pipeline DevOps Project timesheet-devops', 
-                     to: 'malekbedir70@gmail.com'
-            }
-        }
     }
 
 }
