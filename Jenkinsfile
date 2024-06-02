@@ -64,15 +64,4 @@ pipeline {
         }
     }
 
-        
- post {
-        always {
-            emailext(
-                subject: "Jenkins Pipeline: ${currentBuild.fullDisplayName}",
-                body: "Jenkins Pipeline '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL}) completed.",
-                to: 'your-email@example.com'
-            )
-        }
-    }
-
 }
