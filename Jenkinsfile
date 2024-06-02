@@ -62,6 +62,19 @@ pipeline {
                 }
             }
         }
+        stage('Generate Documentation') {
+            steps {
+                sh 'mvn site'
+                publishHTML(target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: 'target/site',
+                    reportFiles: 'index.html',
+                    reportName: 'Project Documentation'
+                ])
+            }
+        }
     }
 
 }
