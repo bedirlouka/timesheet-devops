@@ -116,7 +116,7 @@ Final Report: The pipeline has completed successfully. No action required''',
                      from: '', 
                      replyTo: '', 
                      subject: 'Succès de la pipeline DevOps Project timesheet-devops', 
-                     to: 'bedir.malek@esprit.tn'
+                     to: 'malekbedir70@gmail.com'
             }
         }
     }
