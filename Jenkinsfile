@@ -62,6 +62,26 @@ pipeline {
                 }
             }
         }
+        stage('Monitoring Services G/P') {
+    steps {
+        script {
+            def prometheusStatus = sh(script: "docker inspect -f {{.State.Running}} a0e931309b1a", returnStdout: true).trim()
+            def grafanaStatus = sh(script: "docker inspect -f {{.State.Running}} c43b44e03e5f", returnStdout: true).trim()
+
+            if (prometheusStatus == 'true') {
+                echo "Prometheus is already running."
+            } else {
+                sh 'docker start a0e931309b1a'
+            }
+
+            if (grafanaStatus == 'true') {
+                echo "Grafana is already running."
+            } else {
+                sh 'docker start c43b44e03e5f'
+            }
+        }
+    }
+}
     }
 
 }
